@@ -1,0 +1,14 @@
+import { Router } from 'express';
+import * as controller from '../controllers/orderController.js';
+import { isAuthenticated } from '../middleware/authMiddleware.js';
+const router = Router();
+router.use(isAuthenticated);
+router.post('/createCheckout', controller.createCheckout);
+router.get('/isCheckoutValid', controller.isCheckoutValid);
+router.post('/createPaymentToken', controller.createPaymentToken);
+router.post('/completeCheckout', controller.completeCheckout);
+router.post('/stripePaymentInstant', controller.stripePaymentInstant);
+router.post('/completeCheckoutUsingCard', controller.completeCheckoutUsingCard);
+router.post('/completeCheckoutUsingKhalti', controller.completeCheckoutUsingKhalti);
+router.post('/completeCheckoutUsingStripePaymentInstant', controller.completeCheckoutUsingStripePaymentInstant);
+export default router;

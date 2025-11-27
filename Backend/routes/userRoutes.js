@@ -1,0 +1,12 @@
+import { Router } from 'express';
+import * as controller from '../controllers/userController.js';
+import { isAuthenticated } from '../middleware/authMiddleware.js';
+const router = Router();
+router.use(isAuthenticated);
+router.post('/address', controller.addAddress);
+router.get('/address', controller.getAddresses);
+router.put('/address', controller.updateAddress);
+router.delete('/address', controller.deleteAddress);
+router.post('/orderList', controller.getOrderList);
+router.get('/orderDetails', controller.getOrderDetails);
+export default router;

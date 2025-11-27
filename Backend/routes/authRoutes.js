@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import * as controller from '../controllers/authController.js';
+const router = Router();
+router.post('/signup', controller.signup);
+router.post('/login', controller.login);
+router.get('/confirmEmail/:token', controller.confirmEmail);
+router.get('/resendConfirmation', controller.resendConfirmation);
+router.get('/forgotPassword', controller.forgotPassword);
+router.get('/validateResetToken/:token', controller.validateResetToken);
+router.post('/resetPassword', controller.resetPassword);
+export default router;

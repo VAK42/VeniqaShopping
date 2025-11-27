@@ -1,0 +1,28 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import bodyParser from 'body-parser';
+import config from './config/config.js';
+import { syncDatabase } from './database/models/index.js';
+import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import catalogRoutes from './routes/catalogRoutes.js';
+import shoppingRoutes from './routes/shoppingRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import uiRoutes from './routes/uiRoutes.js';
+const app = express();
+app.use(helmet());
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
+app.use('/catalog', catalogRoutes);
+app.use('/shopping', shoppingRoutes);
+app.use('/orders', orderRoutes);
+app.use('/ui', uiRoutes);
+syncDatabase();
+app.listen(config.server.port, () => {
+  console.log(`Server Started On Port ${config.server.port}`);
+});
+export default app;

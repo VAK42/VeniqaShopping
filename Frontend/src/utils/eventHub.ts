@@ -1,0 +1,3 @@
+type Handler = (...args: any[]) => void
+const events = new Map<string, Set<Handler>>()
+export const eventHub = { on: (name: string, handler: Handler) => { let set = events.get(name); if (!set) { set = new Set(); events.set(name, set) } set.add(handler) }, off: (name: string, handler: Handler) => { const set = events.get(name); if (set) set.delete(handler) }, emit: (name: string, ...args: any[]) => { const set = events.get(name); if (set) set.forEach(h => h(...args)) } }

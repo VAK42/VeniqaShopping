@@ -1,0 +1,4 @@
+import axios from '@/plugins/axios'
+import proxyUrls from '@/constants/proxyUrls'
+import type { ActionContext } from 'vuex'
+export default { namespaced: true, state: { list: [], currentProduct: null }, mutations: { setProducts(state: any, products: any[]) { state.list = products; }, setCurrentProduct(state: any, product: any) { state.currentProduct = product; } }, actions: { async searchProducts({ commit }: ActionContext, query: any) { try { const { data } = await axios.post(proxyUrls.searchCatalog, query); commit('setProducts', data.docs || data); } catch (error) { console.error(error) } }, async getProductDetail({ commit }: ActionContext, id: string) { try { const { data } = await axios.get(`${proxyUrls.getProductDetails}?id=${id}`); commit('setCurrentProduct', data); } catch (error) { console.error(error) } } }, getters: { allProducts: (state: any) => state.list, productDetail: (state: any) => state.currentProduct } }

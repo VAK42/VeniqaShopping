@@ -1,0 +1,1 @@
+declare module 'vuex' { export type ActionContext = any; export function createStore(options: any): any; export function useStore(): any; export type Store = any; const _default: any; export default _default }

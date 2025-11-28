@@ -1,0 +1,22 @@
+export default {
+  signup: '/auth/signup',
+  login: '/auth/login',
+  confirmEmail: '/auth/confirmEmail',
+  resendConfirmation: '/auth/resendConfirmation',
+  forgotPassword: '/auth/forgotPassword',
+  validateResetToken: '/auth/validateResetToken',
+  resetPassword: '/auth/resetPassword',
+  searchCatalog: '/catalog/search',
+  getProductDetails: '/catalog/getProductDetails',
+  addToCart: '/shopping/addToCart',
+  updateCart: '/shopping/updateCart',
+  getCart: '/shopping/getCart',
+  deleteFromCart: '/shopping/deleteFromCart',
+  createCheckout: '/orders/createCheckout',
+  isCheckoutValid: '/orders/isCheckoutValid',
+  completeCheckout: '/orders/completeCheckout',
+  isSessionActive: '/auth/isSessionActive',
+  address: '/user/address',
+  orderList: '/user/orderList',
+  orderDetails: '/user/orderDetails'
+}

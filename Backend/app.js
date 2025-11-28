@@ -12,7 +12,11 @@ import orderRoutes from './routes/orderRoutes.js';
 import uiRoutes from './routes/uiRoutes.js';
 const app = express();
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id']
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/auth', authRoutes);

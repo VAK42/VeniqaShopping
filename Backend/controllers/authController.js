@@ -41,3 +41,6 @@ export const resetPassword = async (req, res) => {
     res.status(200).json(result);
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
+export const isSessionActive = async (req, res) => {
+  res.status(200).json({ user: req.user, status: 'Active' });
+};
